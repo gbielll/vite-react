@@ -1,4 +1,5 @@
-import { useState } from 'react' //lida com status
+import { useState, useEffect } from 'react' //lida com status
+//o useEffect possibilita efeitos nas paginas, deve ser chamado no corpo da function
 import './App.css'
 
 function App() {
@@ -14,6 +15,30 @@ function App() {
     setTemperature(temperature+1);
   }
 
+
+ useEffect(()=>{
+   //aqui nessa primeira funcao que va executar o efeito que for receber na pagina
+  //essa função vai modificar atraves do valor que for validao da variável "temperatura", atraves da função de baixo com o []
+   if(temperature<0){
+      document.body.style.background ='#b0e0e6'; //muda a cor de fundo do body
+   }else if(temperature >=0 && temperature<15){
+      document.body.style.background ='#87cefa';
+   }else if(temperature >=15 && temperature<26){
+      document.body.style.background ='#ffce00';
+   }else if(temperature >=26 && temperature<40){
+      document.body.style.background ='#ff7f7f';
+   }else{
+      document.body.style.background ='#ff27a';
+   }
+  
+  },
+ // na segunda parte que acontecerá a parte de modificação para enviar para a primeira função.
+ //nesse exemplo ele recebará um array de variáveis e decorrente aos seus valores que ocorrerá as modificações
+ //[]: se for vazio executa o useEffect somente quando o componente for carregado
+ //[...]; se tiver valor, executa o useEffect quando o valor da variável dentro do [] for alterada
+ // sem paramentro ([]), o useEffect fica em um loop infinito
+ [temperature] //como eu tenho uma variável: executa o useEffect quando o valor da variável dentro do [] for alterada
+);
 
   return (
     <div className='main-container'> {/* esse main-container, é que contem o main (o pai dela) que vai estilizado, apesar que tem o h1. Assim ja ajuda a alicar direto no pai e no filho*/}
