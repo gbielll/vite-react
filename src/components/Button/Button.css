@@ -1,0 +1,15 @@
+
+button{
+    background-color: #7C8EA2;
+    border: none;
+    padding: 5px 20px;
+    border-radius: 5px;
+    font-size: 24px;
+    cursor: pointer;
+  
+    transition: 0.2s ease-out opacity; /*ande em conjunto com o hover*/
+  }
+  
+  button:hover{
+      opacity: 0.8;
+  }

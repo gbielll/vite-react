@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react' //lida com status
 //o useEffect possibilita efeitos nas paginas, deve ser chamado no corpo da function
 import './App.css'
+import Button from './components/Button';
+import useTemperature from './hooks/useTemperature';
 
 function App() {
   const [temperature, setTemperature] = useState(5); //esse 0 é o valor padrão que vai pro Temperature com o useState(que ele insira os valores)
@@ -17,20 +19,10 @@ function App() {
 
 
  useEffect(()=>{
-   //aqui nessa primeira funcao que va executar o efeito que for receber na pagina
-  //essa função vai modificar atraves do valor que for validao da variável "temperatura", atraves da função de baixo com o []
-   if(temperature<0){
-      document.body.style.background ='#b0e0e6'; //muda a cor de fundo do body
-   }else if(temperature >=0 && temperature<15){
-      document.body.style.background ='#87cefa';
-   }else if(temperature >=15 && temperature<26){
-      document.body.style.background ='#ffce00';
-   }else if(temperature >=26 && temperature<40){
-      document.body.style.background ='#ff7f7f';
-   }else{
-      document.body.style.background ='#ff27a';
-   }
-  
+   //aqui nessa primeira funcao que vai executar o efeito que for receber na pagina
+  //essa função vai modificar atraves do valor que for validao da variável "temperature", atraves da função de baixo com o []
+  //visu, crie um arquivo separado com a parte logica da modificação da variável "temperature"
+    useTemperature(temperature) //chamando o arquivo useTaemperture e mando o a variável "temperature"
   },
  // na segunda parte que acontecerá a parte de modificação para enviar para a primeira função.
  //nesse exemplo ele recebará um array de variáveis e decorrente aos seus valores que ocorrerá as modificações
@@ -46,8 +38,8 @@ function App() {
       <main>
         <h2>{temperature} °C</h2>
         <div className='button-container'>
-          <button onClick={diminuirTemperature}>-</button>
-          <button onClick={aumentarTemperature}>+</button>
+          <Button onClick={diminuirTemperature}>-</Button>
+          <Button onClick={aumentarTemperature}>+</Button>
         </div>
       </main>
     </div>
