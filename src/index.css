@@ -1,0 +1,15 @@
+/*esse index.css é o arquivo geral que se aplica pra todos, mas devo chamar ela no main*/
+
+html,body, #root{
+    width: 100%;
+    margin: 0;
+}
+
+html{
+    height: 100%;
+    background-color: #38434f;
+}
+
+h1,h2,h3,h4,h5,h6,p,span, button{
+color: white;
+}
